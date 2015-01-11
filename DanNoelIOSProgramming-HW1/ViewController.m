@@ -2,7 +2,7 @@
 //  ViewController.m
 //  DanNoelIOSProgramming-HW1
 //
-//  Created by Rachel Noel on 1/10/15.
+//  Created by Dan Noel on 1/10/15.
 //  Copyright (c) 2015 Dan Noel. All rights reserved.
 //
 
@@ -14,6 +14,8 @@
 
 @implementation ViewController
 
+@synthesize userName = _userName;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -24,4 +26,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    
+    if (theTextField == self.textField){
+    
+        [theTextField resignFirstResponder];
+    }
+    
+    return YES;
+    
+}
+
+- (IBAction)changeGreeting:(id)sender {
+    
+    
+    self.userName = self.textField.text;
+    
+    NSString *nameString = self.userName;
+    if ([nameString length] == 0) {
+        nameString = @"World";
+        
+    }
+
+    NSString *greeting = [[NSString alloc] initWithFormat:@"Hello, %@!", nameString];
+    self.label.text = greeting;
+
+
+
+
+
+}
 @end
